@@ -25,6 +25,9 @@ const Home: NextPage = () => {
             </div>
           )}
         </div>
+        <div className="bg-orange-500">
+          <h1>testing testing</h1>
+        </div>
       </main>
     </>
   );
