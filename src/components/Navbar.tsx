@@ -1,12 +1,9 @@
 import React from "react";
-import Head from "next/head";
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
-import { type NextPage } from "next";
 import Link from "next/link";
-import { api } from "~/utils/api";
 
 function Navbar() {
-  const { isLoaded: userLoaded, isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
 
   return (
     <>
