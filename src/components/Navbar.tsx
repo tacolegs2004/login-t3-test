@@ -19,12 +19,12 @@ function Navbar() {
           </Link>
         </span>
         {!isSignedIn && (
-          <span className="ml-4 text-white">
+          <span className="ml-4 text-white hover:bg-blue-500">
             <SignInButton redirectUrl="/signin" />
           </span>
         )}
         {!!isSignedIn && (
-          <span className="ml-4 text-white">
+          <span className="ml-4 text-white hover:bg-blue-500">
             <SignOutButton />
           </span>
         )}
