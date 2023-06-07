@@ -12,9 +12,9 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <main className="flex h-screen w-screen flex-col bg-purple-500">
+      <main className="flex min-h-screen flex-col bg-purple-500">
         <Navbar />
-        <div className="flex-row content-center items-center">
+        <div className="flex flex-grow items-center justify-center">
           {!isPressed ? (
             <button
               onClick={() => setIsPressed(true)}

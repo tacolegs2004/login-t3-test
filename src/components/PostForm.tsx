@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 
+interface Post {
+  header: string;
+  body: string;
+}
+
 const PostForm: React.FC = () => {
   const [header, setHeader] = useState("");
   const [body, setBody] = useState("");
+  const [posts, setPosts] = useState<Post[]>([]);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
