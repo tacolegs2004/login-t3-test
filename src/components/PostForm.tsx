@@ -1,5 +1,6 @@
 import { useUser } from "@clerk/nextjs";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import Post from "./Post";
 
 interface Post {
   header: string;
@@ -13,8 +14,6 @@ const PostForm: React.FC = () => {
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<Post[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const { user } = useUser();
 
   console.log(posts);
 
@@ -73,12 +72,7 @@ const PostForm: React.FC = () => {
               <h2 className="mb-6 text-center text-2xl font-bold">Posts</h2>
             </div>
             {posts.map((post) => (
-              <div key={post.id} className="m-5 flex flex-col space-y-4">
-                <h1 className="text-md font-bold">
-                  {post.header} - {user?.username}
-                </h1>
-                <div className="">{post.body}</div>
-              </div>
+              <Post post={post} key={post.id} />
             ))}
           </div>
         </div>
