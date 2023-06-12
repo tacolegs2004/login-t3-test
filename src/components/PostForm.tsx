@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Post {
   header: string;
@@ -18,16 +18,11 @@ const PostForm: React.FC = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Add your logic to handle the form submission here
-    // You can access the header and body values via the state variables
     console.log("Submitted:", { header, body, id });
     setIsSubmitted(true);
-    // Clear the form inputs
     setHeader("");
     setBody("");
   };
-
-  // useEffect(() => {}, []);
   return (
     <div className="mt-6 flex items-center justify-center">
       {!isSubmitted ? (
