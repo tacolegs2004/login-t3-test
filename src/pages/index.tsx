@@ -4,11 +4,14 @@ import { useState } from "react";
 import Navbar from "~/components/Navbar";
 import PostForm from "~/components/PostForm";
 
-const Home: NextPage = () => {
-  const [isPressed, setIsPressed] = useState<boolean>();
-  const { user } = useUser();
+interface TPosts {
+  id: string;
+  header: string;
+  body: string;
+}
 
-  if (!user) return null;
+const Home = ({ props }: { props: TPosts }) => {
+  const [isPressed, setIsPressed] = useState<boolean>();
 
   return (
     <>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useUser } from "@clerk/nextjs";
+import React, { FormEvent, useState } from "react";
 
 interface Post {
   header: string;
@@ -9,6 +10,8 @@ const PostForm: React.FC = () => {
   const [header, setHeader] = useState("");
   const [body, setBody] = useState("");
   const [posts, setPosts] = useState<Post[]>([]);
+
+  const { user } = useUser();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,6 +24,8 @@ const PostForm: React.FC = () => {
     setHeader("");
     setBody("");
   };
+
+  console.log(posts);
 
   return (
     <div className="mt-6 flex items-center justify-center">
@@ -54,6 +59,7 @@ const PostForm: React.FC = () => {
             <button
               type="submit"
               className="rounded bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600"
+              onClick={() => setPosts([...posts, { header, body }])}
             >
               Create
             </button>
