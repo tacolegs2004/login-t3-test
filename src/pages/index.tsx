@@ -1,16 +1,8 @@
-import { useUser } from "@clerk/nextjs";
-import { type NextPage } from "next";
 import { useState } from "react";
 import Navbar from "~/components/Navbar";
 import PostForm from "~/components/PostForm";
 
-interface TPosts {
-  id: string;
-  header: string;
-  body: string;
-}
-
-const Home = ({ props }: { props: TPosts }) => {
+const Home = () => {
   const [isPressed, setIsPressed] = useState<boolean>();
 
   return (
