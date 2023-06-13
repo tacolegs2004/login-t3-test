@@ -7,7 +7,7 @@ interface NavLinkProps {
   children: React.ReactNode;
 }
 
-function Navbar(): JSX.Element {
+const Navbar = () => {
   const { isSignedIn } = useUser();
 
   return (
@@ -25,7 +25,7 @@ function Navbar(): JSX.Element {
       )}
     </nav>
   );
-}
+};
 
 function NavLink({ href, children }: NavLinkProps): JSX.Element {
   return (

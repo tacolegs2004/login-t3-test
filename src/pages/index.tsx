@@ -14,7 +14,7 @@ const Home = () => {
             {!isPressed ? (
               <button
                 onClick={() => setIsPressed(true)}
-                className="rounded-lg bg-blue-600 p-2 text-white"
+                className="rounded-lg bg-blue-600 p-2 text-white shadow-md"
               >
                 Make Post
               </button>

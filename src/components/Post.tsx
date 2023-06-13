@@ -17,7 +17,7 @@ const Post: React.FC<TPost> = ({ post }) => {
 
   return (
     <>
-      <div key={post.id} className="w-25 m-5 flex flex-col space-y-4">
+      <div key={post.id} className="w-25 q m-5 flex flex-col space-y-4">
         <h1 className="text-md font-bold"></h1>
         <span>
           {post.header} - {user?.username}

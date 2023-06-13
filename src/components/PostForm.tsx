@@ -1,4 +1,3 @@
-import { useUser } from "@clerk/nextjs";
 import React, { useState } from "react";
 import Post from "./Post";
 
@@ -40,7 +39,7 @@ const PostForm: React.FC = () => {
                   id="header"
                   type="text"
                   value={header}
-                  onChange={(event) => setHeader(event.target.value)}
+                  onChange={(e) => setHeader(e.target.value)}
                   className="mt-1 rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
                 />
               </div>
@@ -51,7 +50,7 @@ const PostForm: React.FC = () => {
                 <textarea
                   id="body"
                   value={body}
-                  onChange={(event) => setBody(event.target.value)}
+                  onChange={(e) => setBody(e.target.value)}
                   className="mt-1 rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
                 ></textarea>
               </div>
