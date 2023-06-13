@@ -9,17 +9,19 @@ interface NavLinkProps {
 
 const Navbar = () => {
   const { isSignedIn } = useUser();
+  const signInAndOutStyle =
+    "mr-4 p-2 text-white hover:rounded-lg hover:bg-blue-500";
 
   return (
     <nav className="flex flex-row justify-center bg-blue-400 py-4">
       <NavLink href="/profile">Profile</NavLink>
       <NavLink href="/settings">Settings</NavLink>
       {isSignedIn ? (
-        <span className="ml-4 text-white hover:bg-blue-500">
+        <span className={signInAndOutStyle}>
           <SignOutButton />
         </span>
       ) : (
-        <span className="ml-4 text-white hover:bg-blue-500">
+        <span className={signInAndOutStyle}>
           <SignInButton redirectUrl="/signin" />
         </span>
       )}
@@ -29,7 +31,11 @@ const Navbar = () => {
 
 function NavLink({ href, children }: NavLinkProps): JSX.Element {
   return (
-    <Link href={href} passHref className="mr-4 text-white hover:bg-blue-500">
+    <Link
+      href={href}
+      passHref
+      className="mr-4 p-2 text-white hover:rounded-lg hover:bg-blue-500"
+    >
       {children}
     </Link>
   );
