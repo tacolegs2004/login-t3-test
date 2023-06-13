@@ -17,19 +17,21 @@ const Post: React.FC<TPost> = ({ post }) => {
 
   return (
     <>
-      <div key={post.id} className="m-5 flex flex-col space-y-4">
-        <h1 className="text-md font-bold">
+      <div key={post.id} className="w-25 m-5 flex flex-col space-y-4">
+        <h1 className="text-md font-bold"></h1>
+        <span>
           {post.header} - {user?.username}
-          {user?.profileImageUrl && (
-            <Image
-              src={user.profileImageUrl}
-              width={40}
-              height={40}
-              alt="User Profile Picture"
-            />
-          )}
-        </h1>
-        <div className="">{post.body}</div>
+        </span>
+        {user?.profileImageUrl && (
+          <Image
+            src={user.profileImageUrl}
+            className="mt-2"
+            width={40}
+            height={40}
+            alt="User Profile Picture"
+          />
+        )}
+        <p className="">{post.body}</p>
       </div>
     </>
   );
