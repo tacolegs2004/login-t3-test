@@ -27,7 +27,7 @@ const Post: React.FC<TPost> = ({ post }) => {
     console.log(posts);
   };
 
-  if (isDeleted === true) return null;
+  if (isDeleted) return null;
 
   return (
     <>

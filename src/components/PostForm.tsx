@@ -24,6 +24,7 @@ const PostForm: React.FC = () => {
     setHeader("");
     setBody("");
   };
+
   return (
     <>
       <div className="mt-6 flex items-center justify-center">
