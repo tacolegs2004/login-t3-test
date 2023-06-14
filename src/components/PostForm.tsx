@@ -68,9 +68,6 @@ const PostForm: React.FC = () => {
         ) : (
           <div className="mt-6 flex w-14 items-center justify-center shadow-md">
             <div className="rounded-lg bg-white px-24 py-10 shadow-lg">
-              <div>
-                <h2 className="mb-6 text-center text-2xl font-bold">Posts</h2>
-              </div>
               {posts.map((post) => (
                 <Post post={post} key={post.id} />
               ))}

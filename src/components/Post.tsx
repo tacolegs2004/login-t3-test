@@ -3,6 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { type PostType } from "./PostForm";
+import PostCard from "./PostCard";
 
 interface TTPost {
   header: string;
@@ -31,7 +32,7 @@ const Post: React.FC<TPost> = ({ post }) => {
   return (
     <>
       <div key={post.id} className="w-25 m-5 flex flex-col space-y-4">
-        <h1 className="text-md font-bold"></h1>
+        {!isDeleted && <PostCard />}
         <span>
           {post.header} - {user?.username}
         </span>
