@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Post from "./Post";
 
-interface Post {
+export interface PostType {
   header: string;
   body: string;
   id: number;
@@ -11,7 +11,7 @@ const PostForm: React.FC = () => {
   const [header, setHeader] = useState("");
   const [body, setBody] = useState("");
   const [id, setId] = useState(0);
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<PostType[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   console.log(posts);

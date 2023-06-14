@@ -1,6 +1,8 @@
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { BsTrash } from "react-icons/bs";
+import { type PostType } from "./PostForm";
 
 interface TTPost {
   header: string;
@@ -13,11 +15,24 @@ interface TPost {
 }
 
 const Post: React.FC<TPost> = ({ post }) => {
+  const [header, setHeader] = useState("");
+  const [body, setBody] = useState("");
+  const [id, setId] = useState(0);
+  const [posts, setPosts] = useState<PostType[]>([]);
   const { user } = useUser();
+
+  const handleDelete = () => {
+    const deletePost = posts.filter((p) => p.id !== id);
+
+    // setPosts(deletePost);
+    // setHeader("");
+    // setBody("");
+    // setId(0);
+  };
 
   return (
     <>
-      <div key={post.id} className="w-25 q m-5 flex flex-col space-y-4">
+      <div key={post.id} className="w-25 m-5 flex flex-col space-y-4">
         <h1 className="text-md font-bold"></h1>
         <span>
           {post.header} - {user?.username}
@@ -32,6 +47,13 @@ const Post: React.FC<TPost> = ({ post }) => {
           />
         )}
         <p className="">{post.body}</p>
+
+        <button
+          className="rounded bg-red-500 px-4 py-2 font-bold text-white hover:bg-red-700"
+          onClick={handleDelete}
+        >
+          <BsTrash />
+        </button>
       </div>
     </>
   );
