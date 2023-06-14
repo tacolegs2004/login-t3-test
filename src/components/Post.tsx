@@ -10,25 +10,23 @@ interface TTPost {
   id: number;
 }
 
-interface TPost {
+export interface TPost {
   post: TTPost;
 }
 
 const Post: React.FC<TPost> = ({ post }) => {
-  const [header, setHeader] = useState("");
-  const [body, setBody] = useState("");
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<PostType[]>([]);
+  const [isDeleted, setIsDeleted] = useState(false);
   const { user } = useUser();
 
   const handleDelete = () => {
-    const deletePost = posts.filter((p) => p.id !== id);
-
-    // setPosts(deletePost);
-    // setHeader("");
-    // setBody("");
-    // setId(0);
+    setPosts(posts.filter((p) => p.id !== id));
+    setIsDeleted(true);
+    console.log(posts);
   };
+
+  if (isDeleted === true) return null;
 
   return (
     <>

@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
 import Navbar from "~/components/Navbar";
+import PostButton from "~/components/PostButton";
 import PostForm from "~/components/PostForm";
 
 const Home = () => {
@@ -11,16 +12,7 @@ const Home = () => {
         <Suspense fallback={<h1>Loading...</h1>}>
           <Navbar />
           <div className="flex flex-grow items-center justify-center">
-            {!isPressed ? (
-              <button
-                onClick={() => setIsPressed(true)}
-                className="rounded-lg bg-blue-600 p-2 text-white shadow-md"
-              >
-                Make Post
-              </button>
-            ) : (
-              <PostForm />
-            )}
+            {!isPressed ? <PostButton /> : <PostForm />}
           </div>
         </Suspense>
       </main>
