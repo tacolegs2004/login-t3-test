@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Post from "./Post";
+import Link from "next/link";
 
 export interface PostType {
   header: string;
@@ -9,12 +10,18 @@ export interface PostType {
 
 const PostForm: React.FC = () => {
   const [header, setHeader] = useState("");
+  const [isActive, setIsActive] = useState<boolean>();
   const [body, setBody] = useState("");
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<PostType[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   console.log(posts);
+
+  const active =
+    "rounded bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600";
+
+  const inactive = "rounded bg-gray-500 px-4 py-2 text-white";
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -23,7 +30,10 @@ const PostForm: React.FC = () => {
     setIsSubmitted(true);
     setHeader("");
     setBody("");
+    setId(0);
   };
+
+  const isFormValid = header.trim().length > 0 && body.trim().length > 0;
 
   return (
     <>
@@ -42,6 +52,7 @@ const PostForm: React.FC = () => {
                   value={header}
                   onChange={(e) => setHeader(e.target.value)}
                   className="mt-1 rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                  required={true}
                 />
               </div>
               <div className="flex flex-col">
@@ -53,16 +64,21 @@ const PostForm: React.FC = () => {
                   value={body}
                   onChange={(e) => setBody(e.target.value)}
                   className="mt-1 rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
+                  required={true}
                 ></textarea>
               </div>
               <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className="rounded bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600"
-                  onClick={() => setPosts([...posts, { header, body, id }])}
-                >
-                  Create
-                </button>
+                <Link href="/posts">
+                  <button
+                    type="submit"
+                    disabled={isFormValid ? false : true}
+                    className={isFormValid ? active : inactive}
+                    onClick={() => setPosts([...posts, { header, body, id }])}
+                  >
+                    Post
+                  </button>
+                </Link>
+                {/* <button onClick={() => setIsActive(!isActive)}>activate</button> */}
               </div>
             </form>
           </div>
