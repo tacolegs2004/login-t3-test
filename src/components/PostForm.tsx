@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Post from "./Post";
-import Link from "next/link";
 
 export interface PostType {
   header: string;
@@ -68,17 +67,14 @@ const PostForm: React.FC = () => {
                 ></textarea>
               </div>
               <div className="flex justify-end">
-                <Link href="/posts">
-                  <button
-                    type="submit"
-                    disabled={isFormValid ? false : true}
-                    className={isFormValid ? active : inactive}
-                    onClick={() => setPosts([...posts, { header, body, id }])}
-                  >
-                    Post
-                  </button>
-                </Link>
-                {/* <button onClick={() => setIsActive(!isActive)}>activate</button> */}
+                <button
+                  type="submit"
+                  disabled={isFormValid ? false : true}
+                  className={isFormValid ? active : inactive}
+                  onClick={() => setPosts([...posts, { header, body, id }])}
+                >
+                  Post
+                </button>
               </div>
             </form>
           </div>
