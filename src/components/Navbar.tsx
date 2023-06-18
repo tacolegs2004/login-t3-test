@@ -14,17 +14,14 @@ const Navbar = () => {
 
   return (
     <nav className="flex flex-row justify-center bg-blue-400 py-4">
+      <NavLink href="/">Home</NavLink>
       <NavLink href="/profile">Profile</NavLink>
       <NavLink href="/settings">Settings</NavLink>
-      {isSignedIn ? (
-        <span className={signInAndOutStyle}>
-          <SignOutButton />
-        </span>
-      ) : (
-        <span className={signInAndOutStyle}>
-          <SignInButton redirectUrl="/signin" />
-        </span>
-      )}
+      <span className={signInAndOutStyle}>
+        {!isSignedIn && <SignInButton />}
+        {!!isSignedIn && <SignOutButton />}
+      </span>
+      <NavLink href="/about">About</NavLink>
     </nav>
   );
 };

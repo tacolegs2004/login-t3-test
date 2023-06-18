@@ -5,6 +5,7 @@ import { BsTrash } from "react-icons/bs";
 import { type PostType } from "./PostForm";
 import PostCard from "./PostCard";
 import PostButton from "./PostButton";
+import Link from "next/link";
 
 interface TTPost {
   header: string;
@@ -19,7 +20,6 @@ export interface TPost {
 const Post: React.FC<TPost> = ({ post }) => {
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<PostType[]>([]);
-  const [isPressed, setIsPressed] = useState<boolean>();
   const [isDeleted, setIsDeleted] = useState(false);
   const { user } = useUser();
 
@@ -50,15 +50,18 @@ const Post: React.FC<TPost> = ({ post }) => {
             />
           )}
           <p className="">{post.body}</p>
-          <button
+          <a
             className="rounded bg-red-500 px-2 py-2 font-bold text-white hover:bg-red-700"
             onClick={handleDelete}
+            href={"/"}
           >
             <BsTrash />
-          </button>
+          </a>
         </div>
       ) : (
-        <PostButton />
+        <>
+          <PostButton />
+        </>
       )}
     </>
   );

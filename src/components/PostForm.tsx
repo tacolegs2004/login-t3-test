@@ -9,7 +9,6 @@ export interface PostType {
 
 const PostForm: React.FC = () => {
   const [header, setHeader] = useState("");
-  const [isActive, setIsActive] = useState<boolean>();
   const [body, setBody] = useState("");
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<PostType[]>([]);

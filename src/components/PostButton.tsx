@@ -5,7 +5,7 @@ export default function PostButton({ onClick }: { onClick?: () => void }) {
     <>
       <button
         onClick={onClick}
-        className="rounded-lg bg-blue-600 p-2 text-white shadow-md"
+        className="mt-12 rounded-lg bg-blue-600 p-2 text-white shadow-md"
       >
         Make Post
       </button>
