@@ -5,7 +5,6 @@ import { BsTrash } from "react-icons/bs";
 import { type PostType } from "./PostForm";
 import PostCard from "./PostCard";
 import PostButton from "./PostButton";
-import Link from "next/link";
 
 interface TTPost {
   header: string;

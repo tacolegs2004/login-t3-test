@@ -20,7 +20,7 @@ const Navbar = () => {
       <nav className="flex flex-row justify-center bg-blue-400 py-4">
         {navItems.map((item) => (
           <>
-            {item == "Home" ? (
+            {item === "Home" ? (
               <NavLink href="/" className={navStyle}>
                 {item}
               </NavLink>
