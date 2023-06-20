@@ -5,36 +5,51 @@ import Link from "next/link";
 interface NavLinkProps {
   href: string;
   children: React.ReactNode;
+  className: string;
 }
 
 const Navbar = () => {
   const { isSignedIn } = useUser();
-  const signInAndOutStyle =
-    "mr-4 p-2 text-white hover:rounded-lg hover:bg-blue-500";
+  const navStyle =
+    "mr-6 p-2 text-xl text-white hover:rounded-lg hover:bg-blue-500";
+
+  const navItems = ["Home", "Profile", "Settings", "About"];
 
   return (
-    <nav className="flex flex-row justify-center bg-blue-400 py-4">
-      <NavLink href="/">Home</NavLink>
-      <NavLink href="/profile">Profile</NavLink>
-      <NavLink href="/settings">Settings</NavLink>
-      <span className={signInAndOutStyle}>
-        {!isSignedIn && <SignInButton />}
-        {!!isSignedIn && <SignOutButton />}
-      </span>
-      <NavLink href="/about">About</NavLink>
-    </nav>
+    <>
+      <nav className="flex flex-row justify-center bg-blue-400 py-4">
+        {navItems.map((item) => (
+          <>
+            {item == "Home" ? (
+              <NavLink href="/" className={navStyle}>
+                {item}
+              </NavLink>
+            ) : (
+              <NavLink
+                href={`/${item.toLocaleLowerCase()}`}
+                className={navStyle}
+              >
+                {item}
+              </NavLink>
+            )}
+          </>
+        ))}
+        <span className={navStyle}>
+          {!isSignedIn && <SignInButton />}
+          {!!isSignedIn && <SignOutButton />}
+        </span>
+      </nav>
+    </>
   );
 };
 
-function NavLink({ href, children }: NavLinkProps): JSX.Element {
+function NavLink({ href, children, className }: NavLinkProps): JSX.Element {
   return (
-    <Link
-      href={href}
-      passHref
-      className="mr-4 p-2 text-white hover:rounded-lg hover:bg-blue-500"
-    >
-      {children}
-    </Link>
+    <>
+      <Link href={href} passHref className={className}>
+        {children}
+      </Link>
+    </>
   );
 }
 

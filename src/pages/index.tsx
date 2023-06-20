@@ -13,6 +13,7 @@ const Home = () => {
         ) : (
           <PostForm />
         )}
+        {/* <h1>{data?.post}</h1> */}
       </div>
     </>
   );
