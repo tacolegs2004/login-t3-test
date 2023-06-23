@@ -3,9 +3,10 @@ import Image from "next/image";
 
 export default function Page() {
   const { user } = useUser();
+  const exampleTags = ["books", "computers", "Breaking Bad", "watermelon"];
   return (
     <>
-      <div className="ml-10 flex w-max items-center bg-red-500 px-4 py-2 ">
+      <aside className="ml-30 flex w-max items-center bg-green-500 px-4 py-1 ">
         {user?.profileImageUrl && (
           <div className="ml-6 mt-4">
             <Image
@@ -18,7 +19,16 @@ export default function Page() {
             <h1>{user?.username}</h1>
           </div>
         )}
-      </div>
+      </aside>
+      <aside className=" text-grey-600 ml-10 mt-4 flex w-max flex-col bg-green-500 px-4 py-2">
+        <h2>Tags you follow</h2>
+        <br />
+        {exampleTags.map((tags) => (
+          <h3 key={tags} className="p-2">
+            #{tags},{" "}
+          </h3>
+        ))}
+      </aside>
     </>
   );
 }

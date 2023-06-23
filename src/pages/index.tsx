@@ -1,9 +1,13 @@
+import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
+import Image from "next/image";
 import PostButton from "~/components/PostButton";
 import PostForm from "~/components/PostForm";
+import FrontPageAside from "./components/FrontPageAside";
 
 const Home = () => {
   const [isPressed, setIsPressed] = useState<boolean>();
+  const { user } = useUser();
 
   return (
     <>
@@ -13,8 +17,8 @@ const Home = () => {
         ) : (
           <PostForm />
         )}
-        {/* <h1>{data?.post}</h1> */}
       </div>
+      <FrontPageAside {...user} />
     </>
   );
 };
