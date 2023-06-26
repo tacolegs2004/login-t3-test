@@ -1,12 +1,18 @@
 import Image from "next/image";
 import React from "react";
-import { UserType } from "../types/UserType";
+import { type UserType } from "../types/UserType";
+import { UserResource } from "@clerk/types";
 
-const FrontPageAside = ({ user }: { user: UserType }) => {
+const FrontPageAside = ({
+  user,
+}: {
+  user: UserType | UserResource | null | undefined;
+}) => {
   const exampleTags = ["books", "computers", "Breaking Bad", "watermelon"];
+  //    ^?
   return (
     <>
-      <aside className="ml-30 flex w-max items-center bg-green-500 px-4 py-1 ">
+      <aside className="ml-30 align-left flex w-max items-center bg-green-500 px-4 py-1 ">
         {user?.profileImageUrl && (
           <div className="ml-6 mt-4">
             <Image
