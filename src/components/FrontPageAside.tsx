@@ -1,20 +1,14 @@
 import Image from "next/image";
 import React from "react";
-import { type UserType } from "../types/UserType";
-import { UserResource } from "@clerk/types";
+import { type UserProp } from "../types/UserType";
 
-const FrontPageAside = ({
-  user,
-}: {
-  user: UserType | UserResource | null | undefined;
-}) => {
+const FrontPageAside = ({ user }: { user: UserProp }) => {
   const exampleTags = ["books", "computers", "Breaking Bad", "watermelon"];
-  //    ^?
   return (
     <>
-      <aside className="ml-30 align-left flex w-max items-center bg-green-500 px-4 py-1 ">
+      <aside className="left-4 ml-10 mt-2 flex w-36 items-center bg-green-500 px-2 py-1 align-top ">
         {user?.profileImageUrl && (
-          <div className="ml-6 mt-4">
+          <div className="ml-6 mt-2">
             <Image
               src={user.profileImageUrl}
               className="mb-2 ml-5 mt-4 rounded-full"
@@ -26,7 +20,7 @@ const FrontPageAside = ({
           </div>
         )}
       </aside>
-      <aside className=" text-grey-600 ml-10 mt-4 flex w-max flex-col bg-green-500 px-4 py-2">
+      <aside className="text-grey-600 ml-10 mt-4 flex w-32 flex-col bg-green-500 px-4 py-2">
         <h2>Tags you follow</h2>
         <br />
         {exampleTags.map((tags) => (

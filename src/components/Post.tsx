@@ -33,7 +33,7 @@ const Post: React.FC<TPost> = ({ post }) => {
   return (
     <>
       {!isDeleted ? (
-        <div key={post.id} className="w-25 m-5 flex flex-col space-y-4">
+        <div key={post.id} className="w-25 m-5 flex flex-col">
           {!isDeleted && <PostCard />}
 
           <span>

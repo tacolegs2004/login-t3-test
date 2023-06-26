@@ -1,5 +1,7 @@
 // import { UserData } from "@clerk/types";
 
+import { type UserResource } from "@clerk/types";
+
 export type UserType = {
   id: string;
 
@@ -40,4 +42,6 @@ export type UserType = {
   updatedAt?: Date;
 };
 
-// type User = UserData
+// UserResource is used in order to match the type of "User" to clerks user object
+
+export type UserProp = UserType | UserResource | null | undefined;

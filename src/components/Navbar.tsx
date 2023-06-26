@@ -11,7 +11,7 @@ interface NavLinkProps {
 const Navbar = () => {
   const { isSignedIn } = useUser();
   const navStyle =
-    "mr-6 p-2 text-xl text-white hover:rounded-lg hover:bg-blue-500";
+    "mr-6 p-2 text-lg text-white hover:rounded-lg hover:bg-blue-500";
 
   const navItems = ["Home", "Profile", "Settings", "About"];
 
@@ -21,13 +21,14 @@ const Navbar = () => {
         {navItems.map((item) => (
           <>
             {item === "Home" ? (
-              <NavLink href="/" className={navStyle}>
+              <NavLink href="/" className={navStyle} key={item}>
                 {item}
               </NavLink>
             ) : (
               <NavLink
                 href={`/${item.toLocaleLowerCase()}`}
                 className={navStyle}
+                key={item}
               >
                 {item}
               </NavLink>

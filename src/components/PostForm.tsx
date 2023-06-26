@@ -47,6 +47,7 @@ const PostForm: React.FC = () => {
                 <input
                   id="header"
                   type="text"
+                  placeholder="Header"
                   value={header}
                   onChange={(e) => setHeader(e.target.value)}
                   className="mt-1 rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
@@ -60,6 +61,7 @@ const PostForm: React.FC = () => {
                 <textarea
                   id="body"
                   value={body}
+                  placeholder="Type what's on your mind!"
                   onChange={(e) => setBody(e.target.value)}
                   className="mt-1 rounded border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none"
                   required={true}
