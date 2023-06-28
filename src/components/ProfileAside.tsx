@@ -14,10 +14,10 @@ export const getServerSideProps: GetServerSideProps<{
 
 const ProfileAside = ({
   user,
-  props,
+  photos,
 }: {
   user: UserProp;
-  props?: InferGetServerSidePropsType<typeof getServerSideProps>;
+  photos?: InferGetServerSidePropsType<typeof getServerSideProps>;
 }) => {
   const exampleTags = ["books", "computers", "Breaking Bad", "watermelon"];
   const examplePages = [
@@ -73,16 +73,21 @@ const ProfileAside = ({
             </p>
           </span>
         ))}
-        {props?.photos.map((photo) => (
-          <>
-            <Image
-              src={photo.thumbnailUrl}
-              alt="profile picture"
-              width={50}
-              height={60}
-            />
-          </>
-        ))}
+        <aside className="bg-white p-4">
+          {photos?.photos.map((photo) => {
+            return (
+              <>
+                <Image
+                  src={photo.thumbnailUrl}
+                  alt="profile picture"
+                  key={photo.id}
+                  width={50}
+                  height={50}
+                />
+              </>
+            );
+          })}
+        </aside>
       </aside>
     </>
   );
