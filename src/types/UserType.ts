@@ -45,3 +45,16 @@ export type UserType = {
 // UserResource is used in order to match the type of "User" to clerks user object
 
 export type UserProp = UserType | UserResource | null | undefined;
+
+export type TPhotos = {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+};
+
+export interface PhotosResponse {
+  // Define the structure of the JSON response
+  photos: TPhotos[];
+}

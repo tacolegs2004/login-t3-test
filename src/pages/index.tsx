@@ -2,25 +2,26 @@ import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import PostButton from "../components/PostButton";
 import PostForm from "../components/PostForm";
-import FrontPageAside from "../components/FrontPageAside";
+import ProfileAside from "../components/ProfileAside";
 
 const Home = () => {
   const [isPressed, setIsPressed] = useState<boolean>();
   const { user } = useUser();
-  //    ^? type
   return (
-    <>
-      <span className="flex flex-grow items-center justify-center">
-        {!isPressed ? (
-          <PostButton onClick={() => setIsPressed(true)} />
-        ) : (
-          <PostForm />
-        )}
-      </span>
+    <div className="flex">
       <aside>
-        <FrontPageAside user={user} />
+        <ProfileAside user={user} />
       </aside>
-    </>
+      <main className="flex-grow">
+        <span className="mr-80 flex items-center justify-center">
+          {!isPressed ? (
+            <PostButton onClick={() => setIsPressed(true)} />
+          ) : (
+            <PostForm />
+          )}
+        </span>
+      </main>
+    </div>
   );
 };
 

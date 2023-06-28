@@ -17,9 +17,9 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="flex flex-row justify-center bg-blue-400 py-4">
+      <nav className="flex w-full flex-row justify-center bg-blue-400 px-20 py-4">
         {navItems.map((item) => (
-          <>
+          <span className="pr-8 pt-2" key={item}>
             {item === "Home" ? (
               <NavLink href="/" className={navStyle} key={item}>
                 {item}
@@ -33,7 +33,7 @@ const Navbar = () => {
                 {item}
               </NavLink>
             )}
-          </>
+          </span>
         ))}
         <span className={navStyle}>
           {!isSignedIn && <SignInButton />}
