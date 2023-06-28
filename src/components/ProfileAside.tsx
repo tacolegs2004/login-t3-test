@@ -76,7 +76,7 @@ const ProfileAside = ({
         <aside className="bg-white p-4">
           {photos?.photos.map((photo) => {
             return (
-              <>
+              <span key={photo.id}>
                 <Image
                   src={photo.thumbnailUrl}
                   alt="profile picture"
@@ -84,7 +84,7 @@ const ProfileAside = ({
                   width={50}
                   height={50}
                 />
-              </>
+              </span>
             );
           })}
         </aside>
