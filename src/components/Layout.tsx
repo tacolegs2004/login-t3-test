@@ -1,9 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-
-type Props = {
-  children: React.ReactNode;
-};
+import type { Props } from "~/types/UserType";
 
 export default function Layout({ children }: Props) {
   return (

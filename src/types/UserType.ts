@@ -58,3 +58,8 @@ export interface PhotosResponse {
   // Define the structure of the JSON response
   photos: TPhotos[];
 }
+
+export type Props = {
+  children?: React.ReactNode;
+  className?: string;
+};

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 import type { PhotosResponse, TPhotos, UserProp } from "../types/UserType";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
@@ -14,10 +15,9 @@ export const getServerSideProps: GetServerSideProps<{
 
 const ProfileAside = ({
   user,
-  photos,
 }: {
   user: UserProp;
-  photos?: InferGetServerSidePropsType<typeof getServerSideProps>;
+  // photos?: InferGetServerSidePropsType<typeof getServerSideProps>; // Include the fetched photos in the props
 }) => {
   const exampleTags = ["books", "computers", "Breaking Bad", "watermelon"];
   const examplePages = [
@@ -39,20 +39,22 @@ const ProfileAside = ({
   ];
   return (
     <>
-      <aside className="left-4 ml-10 mt-2 flex w-44 items-center bg-green-500 px-2 py-1 align-top">
-        {user?.profileImageUrl && (
-          <div className="ml-6 mt-2">
-            <Image
-              src={user.profileImageUrl}
-              className="mb-2 ml-5 mt-4 rounded-full"
-              width={40}
-              height={40}
-              alt="User Profile Picture"
-            />
-            <h1>{user?.username}</h1>
-          </div>
-        )}
-      </aside>
+      <Link href="/profile">
+        <aside className="left-4 ml-10 mt-2 flex w-44 items-center bg-green-500 px-2 py-1 align-top">
+          {user?.profileImageUrl && (
+            <div className="ml-6 mt-2">
+              <Image
+                src={user.profileImageUrl}
+                className="mt-22 mb-2 ml-5 rounded-full"
+                width={40}
+                height={40}
+                alt="User Profile Picture"
+              />
+              <h1>{user?.username}</h1>
+            </div>
+          )}
+        </aside>
+      </Link>
       <aside className="text-grey-600 ml-10 mt-4 flex w-44 flex-col bg-green-500 px-6 py-2">
         <h2 className="underline">Tags you follow</h2>
         <br />
@@ -62,7 +64,7 @@ const ProfileAside = ({
           </span>
         ))}
       </aside>
-      <aside className="mb-4 ml-10 mt-2 rounded-md bg-white px-2 py-2">
+      <aside className="mb-4 ml-10 mt-2 rounded-md bg-white px-4 py-2">
         <h2>Recommended Pages</h2>
         {examplePages.map((pages) => (
           <span key={pages.id} className="px-4">
@@ -73,21 +75,18 @@ const ProfileAside = ({
             </p>
           </span>
         ))}
-        <aside className="bg-white p-4">
-          {photos?.photos.map((photo) => {
-            return (
-              <span key={photo.id}>
-                <Image
-                  src={photo.thumbnailUrl}
-                  alt="profile picture"
-                  key={photo.id}
-                  width={50}
-                  height={50}
-                />
-              </span>
-            );
-          })}
-        </aside>
+        {/* {photos?.map((photo) => (
+          <span key={photo.id} className="px-4">
+            <h3>{photo.title}</h3>
+            <Image
+              src={photo.url}
+              className="mb-2 ml-5 mt-4 rounded-full"
+              width={40}
+              height={40}
+              alt="User Profile Picture"
+            />
+          </span>
+        ))} */}
       </aside>
     </>
   );

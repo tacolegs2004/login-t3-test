@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { type PostType } from "./PostForm";
 import PostButton from "./PostButton";
+import PostCard from "./PostCard";
 
 interface TTPost {
   header: string;
@@ -30,13 +31,9 @@ const Post: React.FC<TPost> = ({ post }) => {
   if (isDeleted) return null;
 
   return (
-    <>
+    <PostCard>
       {!isDeleted ? (
         <div key={post.id} className="w-25 m-5 flex flex-col">
-          {!isDeleted && (
-            <h2 className="text-center text-2xl font-bold">Posts</h2>
-          )}
-
           <span>
             {post.header} - {user?.username}
           </span>
@@ -59,11 +56,9 @@ const Post: React.FC<TPost> = ({ post }) => {
           </a>
         </div>
       ) : (
-        <div>
-          <PostButton />
-        </div>
+        <PostButton />
       )}
-    </>
+    </PostCard>
   );
 };
 

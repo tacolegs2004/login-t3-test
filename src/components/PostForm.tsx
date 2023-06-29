@@ -34,7 +34,7 @@ const PostForm: React.FC = () => {
   const isFormValid = header.trim().length > 0 && body.trim().length > 0;
 
   return (
-    <div className="mt-6 flex items-center justify-center">
+    <div className="mr-36 scroll-px-20 pb-48">
       {!isSubmitted ? (
         <div className="rounded-lg bg-white p-8 shadow-lg">
           <h2 className="mb-4 text-xl font-bold">Create a Post</h2>
