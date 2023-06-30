@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import type { PhotosResponse, TPhotos, UserProp } from "../types/UserType";
-import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import type { GetServerSideProps } from "next";
 
 export const getServerSideProps: GetServerSideProps<{
   photos: TPhotos[];
