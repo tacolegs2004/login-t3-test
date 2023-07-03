@@ -1,25 +1,15 @@
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { Children, useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import { type PostType } from "./PostForm";
-import PostButton from "./PostButton";
-import PostCard from "./PostCard";
-
-interface TTPost {
-  header: string;
-  body: string;
-  id: number;
-}
-
-export interface TPost {
-  post: TTPost;
-}
+import Link from "next/link";
+import type { TPost } from "~/types/PostType";
 
 const Post: React.FC<TPost> = ({ post }) => {
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<PostType[]>([]);
-  const [isDeleted, setIsDeleted] = useState(false);
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
   const { user } = useUser();
 
   const handleDelete = () => {
@@ -31,34 +21,37 @@ const Post: React.FC<TPost> = ({ post }) => {
   if (isDeleted) return null;
 
   return (
-    <PostCard>
-      {!isDeleted ? (
-        <div key={post.id} className="w-25 m-5 flex flex-col">
-          <span>
-            {post.header} - {user?.username}
-          </span>
+    <div className="w-full px-56">
+      {!isDeleted && (
+        <div key={post.id} className="flex items-start">
           {user?.profileImageUrl && (
-            <Image
-              src={user.profileImageUrl}
-              className="mt-2"
-              width={40}
-              height={40}
-              alt="User Profile Picture"
-            />
+            <div className="py-4">
+              <Image
+                src={user.profileImageUrl}
+                className="h-16 w-16 rounded-full"
+                alt="User Profile Picture"
+                width={60}
+                height={60}
+              />
+              <span className="mt-2">{user.username}</span>
+            </div>
           )}
-          <p className="">{post.body}</p>
-          <a
-            className="rounded bg-red-500 px-2 py-2 font-bold text-white hover:bg-red-700"
+          <div className="flex flex-row">
+            <span className="mb-2">
+              <b>{post.header}</b>
+              <br /> <p>{post.body}</p>
+            </span>
+          </div>
+          <Link
+            className="ml-auto flex items-center"
             onClick={handleDelete}
-            href={"/"}
+            href="/"
           >
             <BsTrash />
-          </a>
+          </Link>
         </div>
-      ) : (
-        <PostButton />
       )}
-    </PostCard>
+    </div>
   );
 };
 

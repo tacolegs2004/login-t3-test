@@ -1,12 +1,7 @@
 import React from "react";
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
-
-interface NavLinkProps {
-  href: string;
-  children: React.ReactNode;
-  className: string;
-}
+import { NavLinkProps } from "~/types/NavType";
 
 const Navbar = () => {
   const { isSignedIn } = useUser();

@@ -1,17 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import type { PhotosResponse, TPhotos, UserProp } from "../types/UserType";
-import type { GetServerSideProps } from "next";
-
-export const getServerSideProps: GetServerSideProps<{
-  photos: TPhotos[];
-}> = async () => {
-  const res = await fetch("https://jsonplaceholder.typicode.com/photos");
-  const data = (await res.json()) as PhotosResponse;
-  const photos = data.photos;
-  return { props: { photos } };
-};
+import type { UserProp } from "../types/UserType";
 
 const ProfileAside = ({
   user,
@@ -75,18 +65,6 @@ const ProfileAside = ({
             </p>
           </span>
         ))}
-        {/* {photos?.map((photo) => (
-          <span key={photo.id} className="px-4">
-            <h3>{photo.title}</h3>
-            <Image
-              src={photo.url}
-              className="mb-2 ml-5 mt-4 rounded-full"
-              width={40}
-              height={40}
-              alt="User Profile Picture"
-            />
-          </span>
-        ))} */}
       </aside>
     </>
   );
