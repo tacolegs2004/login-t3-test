@@ -30,7 +30,7 @@ const ProfileAside = ({
   return (
     <>
       <Link href="/profile">
-        <aside className="left-4 ml-10 mt-2 flex w-44 items-center bg-green-500 px-2 py-1 align-top">
+        <aside className="left-4 ml-10 mt-2 flex w-48 items-center rounded-md bg-green-500 px-2 py-1 align-top">
           {user?.profileImageUrl && (
             <div className="ml-6 mt-2">
               <Image
@@ -45,7 +45,7 @@ const ProfileAside = ({
           )}
         </aside>
       </Link>
-      <aside className="text-grey-600 ml-10 mt-4 flex w-44 flex-col bg-green-500 px-6 py-2">
+      <aside className="text-grey-600 mb-4 ml-10 mt-4 flex w-48 flex-col rounded-md bg-green-500 px-6 py-2">
         <h2 className="underline">Tags you follow</h2>
         <br />
         {exampleTags.map((tags) => (
@@ -54,15 +54,12 @@ const ProfileAside = ({
           </span>
         ))}
       </aside>
-      <aside className="mb-4 ml-10 mt-2 rounded-md bg-white px-4 py-2">
+      <aside className="mb-4 ml-10 rounded-md bg-white px-4 py-2">
         <h2>Recommended Pages</h2>
         {examplePages.map((pages) => (
           <span key={pages.id} className="px-4">
             <h3>{pages.displayName}</h3>
-            <p className="text-slate-400">
-              {"@"}
-              {pages.username}
-            </p>
+            <p className="text-slate-400">@{pages.username}</p>
           </span>
         ))}
       </aside>
