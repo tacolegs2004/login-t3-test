@@ -1,20 +1,23 @@
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import PostButton from "../components/PostButton";
-import PostForm, { PostType } from "../components/PostForm";
+import PostForm from "../components/PostForm";
 import ProfileAside from "../components/ProfileAside";
 import PostCard from "~/components/PostCard";
+import type { TPost } from "~/types/PostType";
+import Post from "~/components/Post";
 import { BsTrash } from "react-icons/bs";
 
 const Home = () => {
   const [isPressed, setIsPressed] = useState<boolean>(false);
   const { user } = useUser();
   const [id, setId] = useState(0);
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const [posts, setPosts] = useState<TPost[]>([]);
   const [isDeleted, setIsDeleted] = useState<boolean>();
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleDelete = () => {
-    setPosts(posts.filter((p) => p.id !== id));
+    setPosts(posts.filter(({ post }) => post?.id !== id));
     setIsDeleted(true);
     console.log(posts);
   };
@@ -29,17 +32,16 @@ const Home = () => {
             {isPressed && (
               <>
                 <PostForm />{" "}
-                <button
-                  className="flex items-center"
-                  onClick={() => setIsPressed(false)}
-                  onSubmit={handleDelete}
-                >
-                  <br />
-                  <br />
-                  <BsTrash />
-                </button>
               </>
             )}
+            <>
+              {isSubmitted && (
+                <Post
+                  onClick={handleDelete}
+                  onSubmit={() => setIsSubmitted(!isSubmitted)}
+                />
+              )}
+            </>
             <span className="ml-16 mr-96 mt-96 h-full flex-grow">
               <PostButton onClick={() => setIsPressed(!isPressed)} />
             </span>

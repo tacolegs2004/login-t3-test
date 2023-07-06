@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import Post from "./Post";
-
-export interface PostType {
-  header: string;
-  body: string;
-  id: number;
-}
+import { type TPost } from "~/types/PostType";
 
 const PostForm: React.FC = () => {
   const [header, setHeader] = useState("");
   const [body, setBody] = useState("");
   const [id, setId] = useState(0);
-  const [posts, setPosts] = useState<PostType[]>([]);
+  const [posts, setPosts] = useState<TPost[]>([]);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  console.log(posts);
+  // console.log(posts);
 
   const active =
     "rounded bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600";
@@ -71,7 +66,9 @@ const PostForm: React.FC = () => {
                 type="submit"
                 disabled={isFormValid ? false : true}
                 className={isFormValid ? active : inactive}
-                onClick={() => setPosts([...posts, { header, body, id }])}
+                onClick={() =>
+                  setPosts([...posts, { post: { header, body, id } }])
+                }
               >
                 Post
               </button>
@@ -81,8 +78,13 @@ const PostForm: React.FC = () => {
       ) : (
         <div className="mt-6 flex w-14 items-center justify-center shadow-md">
           <div className="rounded-lg bg-white px-24 py-10 shadow-lg">
-            {posts.map((post) => (
-              <Post post={post} key={post.id} />
+            {posts.map(({ post, onClick, onSubmit }) => (
+              <Post
+                post={post}
+                key={id}
+                onClick={onClick}
+                onSubmit={onSubmit}
+              />
             ))}
           </div>
         </div>
