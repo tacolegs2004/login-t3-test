@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { BsTrash } from "react-icons/bs";
 import type { TPost } from "~/types/PostType";
 
-const Post: React.FC<TPost> = ({ post, onClick, onSubmit }) => {
+const Post: React.FC<TPost> = ({ post, onClick }) => {
   const [posts, setPosts] = useState<TPost[]>([]);
   const [isPressed, setIsPressed] = useState<boolean>(true);
   const { user } = useUser();

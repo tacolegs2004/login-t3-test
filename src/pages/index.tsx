@@ -20,6 +20,7 @@ const Home = () => {
     setPosts(posts.filter(({ post }) => post?.id !== id));
     setIsDeleted(true);
     setId(0);
+    setIsSubmitted(!isSubmitted);
     setIsPressed(!isPressed);
     console.log(posts);
   };
@@ -27,7 +28,7 @@ const Home = () => {
   const handlePostButton = () => {
     setIsPressed(!isPressed);
     // setIsSubmitted(true);
-    setIsDeleted(true);
+    setIsDeleted(false);
   };
   return (
     <div className="flex">
@@ -37,24 +38,8 @@ const Home = () => {
       <main className="flex-grow">
         <span className="mr-28 flex items-center justify-center">
           <PostCard className="ml-[22rem] mr-36 items-center text-center">
-            {isPressed && (
-              <>
-                <PostForm />{" "}
-              </>
-            )}
-            <>
-              <>
-                {isSubmitted && <Post />}
-                {isDeleted && (
-                  <button className="flex items-center" onClick={handleDelete}>
-                    <br />
-                    <br />
-                    <BsTrash />
-                  </button>
-                )}
-              </>
-            </>
-            <span className="ml-16 mr-96 mt-96 h-full flex-grow">
+            {isPressed && <PostForm onClick={handleDelete} />}
+            <span className="ml-16 mr-96 mt-80 h-full flex-grow">
               <PostButton onClick={handlePostButton} />
             </span>
           </PostCard>

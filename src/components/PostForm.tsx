@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { MouseEvent, MouseEventHandler, useState } from "react";
 import Post from "./Post";
-import { type TPost } from "~/types/PostType";
+import type { TPost, TPostEventTypes } from "~/types/PostType";
 import { BsTrash } from "react-icons/bs";
 
-const PostForm: React.FC = () => {
+const PostForm: React.FC<TPostEventTypes> = ({ onClick }) => {
   const [header, setHeader] = useState("");
   const [isPressed, setIsPressed] = useState(false);
   const [body, setBody] = useState("");
@@ -97,11 +97,11 @@ const PostForm: React.FC = () => {
                 onSubmit={onSubmit}
               />
             ))}
-            {/* <button className="flex items-center" onClick={handleDelete}>
+            <button className="ml-24 flex items-center" onClick={onClick}>
               <br />
               <br />
               {!isDeleted && <BsTrash />}
-            </button> */}
+            </button>
           </div>
         </div>
       )}
