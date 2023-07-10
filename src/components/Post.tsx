@@ -31,15 +31,6 @@ const Post: React.FC<TPost> = ({ post, onClick, onSubmit }) => {
             <br /> <p>{post?.body}</p>
           </span>
         </div>
-        <button
-          className="flex items-center"
-          onClick={onClick}
-          onSubmit={onSubmit}
-        >
-          <br />
-          <br />
-          <BsTrash />
-        </button>
       </div>
     )
   );

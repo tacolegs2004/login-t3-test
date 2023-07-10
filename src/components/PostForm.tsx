@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Post from "./Post";
 import { type TPost } from "~/types/PostType";
+import { BsTrash } from "react-icons/bs";
 
 const PostForm: React.FC = () => {
   const [header, setHeader] = useState("");
+  const [isPressed, setIsPressed] = useState(false);
   const [body, setBody] = useState("");
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<TPost[]>([]);
+  const [isDeleted, setIsDeleted] = useState<boolean>();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   // console.log(posts);
@@ -26,12 +29,20 @@ const PostForm: React.FC = () => {
     setId(0);
   };
 
+  const handleDelete = () => {
+    setPosts(posts.filter(({ post }) => post?.id !== id));
+    setIsDeleted(true);
+    setId(0);
+    setIsPressed(!isPressed);
+    console.log(posts);
+  };
+
   const isFormValid = header.trim().length > 0 && body.trim().length > 0;
 
   return (
-    <div className="mr-48">
+    <>
       {!isSubmitted ? (
-        <div className="mr-24 mt-4 rounded-lg bg-white p-8 shadow-lg">
+        <div className="ml-12 mr-52 mt-4 rounded-lg bg-white p-8 shadow-lg">
           <h2 className="mb-4 text-xl font-bold">Create a Post</h2>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="flex flex-col">
@@ -76,7 +87,7 @@ const PostForm: React.FC = () => {
           </form>
         </div>
       ) : (
-        <div className="mt-6 flex w-14 items-center justify-center shadow-md">
+        <div className="mr-48 mt-6 flex w-14 items-center justify-center shadow-md">
           <div className="rounded-lg bg-white px-24 py-10 shadow-lg">
             {posts.map(({ post, onClick, onSubmit }) => (
               <Post
@@ -86,10 +97,15 @@ const PostForm: React.FC = () => {
                 onSubmit={onSubmit}
               />
             ))}
+            {/* <button className="flex items-center" onClick={handleDelete}>
+              <br />
+              <br />
+              {!isDeleted && <BsTrash />}
+            </button> */}
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

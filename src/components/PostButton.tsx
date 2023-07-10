@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PostButton({ onClick }: { onClick: () => void }) {
+export default function PostButton({ onClick }: { onClick?: () => void }) {
   return (
     <span className="bg-none shadow-none">
       <button

@@ -9,7 +9,7 @@ import Post from "~/components/Post";
 import { BsTrash } from "react-icons/bs";
 
 const Home = () => {
-  const [isPressed, setIsPressed] = useState<boolean>(false);
+  const [isPressed, setIsPressed] = useState(false);
   const { user } = useUser();
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<TPost[]>([]);
@@ -19,7 +19,15 @@ const Home = () => {
   const handleDelete = () => {
     setPosts(posts.filter(({ post }) => post?.id !== id));
     setIsDeleted(true);
+    setId(0);
+    setIsPressed(!isPressed);
     console.log(posts);
+  };
+
+  const handlePostButton = () => {
+    setIsPressed(!isPressed);
+    // setIsSubmitted(true);
+    setIsDeleted(true);
   };
   return (
     <div className="flex">
@@ -28,22 +36,26 @@ const Home = () => {
       </aside>
       <main className="flex-grow">
         <span className="mr-28 flex items-center justify-center">
-          <PostCard className="ml-96 mr-36 items-center text-center">
+          <PostCard className="ml-[22rem] mr-36 items-center text-center">
             {isPressed && (
               <>
                 <PostForm />{" "}
               </>
             )}
             <>
-              {isSubmitted && (
-                <Post
-                  onClick={handleDelete}
-                  onSubmit={() => setIsSubmitted(!isSubmitted)}
-                />
-              )}
+              <>
+                {isSubmitted && <Post />}
+                {isDeleted && (
+                  <button className="flex items-center" onClick={handleDelete}>
+                    <br />
+                    <br />
+                    <BsTrash />
+                  </button>
+                )}
+              </>
             </>
             <span className="ml-16 mr-96 mt-96 h-full flex-grow">
-              <PostButton onClick={() => setIsPressed(!isPressed)} />
+              <PostButton onClick={handlePostButton} />
             </span>
           </PostCard>
         </span>
