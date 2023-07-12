@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import type { UserProp } from "../types/UserType";
 
-const ProfileAside = ({ user }: { user: UserProp }) => {
+const ProfileAside: React.FC<{ user: UserProp }> = ({ user }) => {
   const exampleTags = ["books", "computers", "Breaking Bad", "watermelon"];
   const examplePages = [
     {

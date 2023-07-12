@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import type { Props } from "~/types/UserType";
-import { NextPage } from "next";
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (

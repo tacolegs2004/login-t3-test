@@ -2,7 +2,7 @@ import type { NavTypes } from "~/types/NavType";
 import Link from "next/link";
 import React from "react";
 
-const NavLink = ({ children, className, href }: NavTypes) => {
+const NavLink: React.FC<NavTypes> = ({ children, className, href }) => {
   return (
     <>
       <Link className={className} href={href}>
