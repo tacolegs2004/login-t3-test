@@ -1,4 +1,4 @@
-import type { FormEventHandler, MouseEvent, MouseEventHandler } from "react";
+import type { FormEventHandler, MouseEventHandler } from "react";
 // export interface TTPost {
 //   header: string;
 //   body: string;

@@ -1,10 +1,9 @@
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import React, { useState } from "react";
-import { BsTrash } from "react-icons/bs";
 import type { TPost } from "~/types/PostType";
 
-const Post: React.FC<TPost> = ({ post, onClick }) => {
+const Post: React.FC<TPost> = ({ post }) => {
   const [posts, setPosts] = useState<TPost[]>([]);
   const [isPressed, setIsPressed] = useState<boolean>(true);
   const { user } = useUser();
@@ -12,9 +11,12 @@ const Post: React.FC<TPost> = ({ post, onClick }) => {
   console.log(posts);
   return (
     isPressed && (
-      <div key={post?.id} className="flex w-full items-start px-56">
+      <div
+        key={post?.id}
+        className="mr-[15.4rem] flex w-fit flex-row items-start px-4"
+      >
         {user?.profileImageUrl && (
-          <div className="py-4">
+          <div className="mr-[7rem] py-4">
             <Image
               src={user.profileImageUrl}
               className="h-16 w-16 rounded-full"
@@ -25,7 +27,7 @@ const Post: React.FC<TPost> = ({ post, onClick }) => {
             <span className="mt-2">{user.username}</span>
           </div>
         )}
-        <div className="flex flex-row">
+        <div className="ml-6 flex space-y-8">
           <span className="mb-2">
             <b>{post?.header}</b>
             <br /> <p>{post?.body}</p>

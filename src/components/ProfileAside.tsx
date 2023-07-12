@@ -3,12 +3,7 @@ import React from "react";
 import Link from "next/link";
 import type { UserProp } from "../types/UserType";
 
-const ProfileAside = ({
-  user,
-}: {
-  user: UserProp;
-  // photos?: InferGetServerSidePropsType<typeof getServerSideProps>; // Include the fetched photos in the props
-}) => {
+const ProfileAside = ({ user }: { user: UserProp }) => {
   const exampleTags = ["books", "computers", "Breaking Bad", "watermelon"];
   const examplePages = [
     {

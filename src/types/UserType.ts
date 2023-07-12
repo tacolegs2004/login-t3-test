@@ -63,3 +63,17 @@ export type Props = {
   children?: React.ReactNode;
   className?: string;
 };
+
+export interface Root {
+  users: User[];
+}
+
+export interface User {
+  display_name: string;
+  username: string;
+  post: {
+    id: number;
+    header: string;
+    body: string;
+  };
+}

@@ -5,8 +5,8 @@ import PostForm from "../components/PostForm";
 import ProfileAside from "../components/ProfileAside";
 import PostCard from "~/components/PostCard";
 import type { TPost } from "~/types/PostType";
-import Post from "~/components/Post";
-import { BsTrash } from "react-icons/bs";
+// import Post from "~/components/Post";
+// import { BsTrash } from "react-icons/bs";
 
 const Home = () => {
   const [isPressed, setIsPressed] = useState(false);
@@ -36,10 +36,10 @@ const Home = () => {
         <ProfileAside user={user} />
       </aside>
       <main className="flex-grow">
-        <span className="mr-28 flex items-center justify-center">
-          <PostCard className="ml-[22rem] mr-36 items-center text-center">
+        <span className="flex items-center justify-center pr-12">
+          <PostCard className="ml-[22rem] mr-36">
             {isPressed && <PostForm onClick={handleDelete} />}
-            <span className="ml-16 mr-96 mt-80 h-full flex-grow">
+            <span className="ml-24 mr-[24rem] mt-80 h-full flex-grow">
               <PostButton onClick={handlePostButton} />
             </span>
           </PostCard>

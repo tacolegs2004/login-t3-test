@@ -1,6 +1,7 @@
 import React from "react";
+import type { ButtonTypes } from "~/types/PostButtonType";
 
-export default function PostButton({ onClick }: { onClick?: () => void }) {
+const PostButton: React.FC<ButtonTypes> = ({ onClick }) => {
   return (
     <span className="bg-none shadow-none">
       <button
@@ -11,4 +12,6 @@ export default function PostButton({ onClick }: { onClick?: () => void }) {
       </button>
     </span>
   );
-}
+};
+
+export default PostButton;

@@ -1,23 +1,15 @@
-import React, { MouseEvent, MouseEventHandler, useState } from "react";
+import React, { useState } from "react";
 import Post from "./Post";
 import type { TPost, TPostEventTypes } from "~/types/PostType";
 import { BsTrash } from "react-icons/bs";
 
 const PostForm: React.FC<TPostEventTypes> = ({ onClick }) => {
   const [header, setHeader] = useState("");
-  const [isPressed, setIsPressed] = useState(false);
   const [body, setBody] = useState("");
   const [id, setId] = useState(0);
   const [posts, setPosts] = useState<TPost[]>([]);
   const [isDeleted, setIsDeleted] = useState<boolean>();
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  // console.log(posts);
-
-  const active =
-    "rounded bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600";
-
-  const inactive = "rounded bg-gray-500 px-4 py-2 text-white";
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,20 +21,12 @@ const PostForm: React.FC<TPostEventTypes> = ({ onClick }) => {
     setId(0);
   };
 
-  const handleDelete = () => {
-    setPosts(posts.filter(({ post }) => post?.id !== id));
-    setIsDeleted(true);
-    setId(0);
-    setIsPressed(!isPressed);
-    console.log(posts);
-  };
-
   const isFormValid = header.trim().length > 0 && body.trim().length > 0;
 
   return (
     <>
       {!isSubmitted ? (
-        <div className="ml-12 mr-52 mt-4 rounded-lg bg-white p-8 shadow-lg">
+        <div className="mr-[36rem] mt-4 w-64 rounded-lg bg-white py-4 pl-12 pr-4 shadow-lg">
           <h2 className="mb-4 text-xl font-bold">Create a Post</h2>
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div className="flex flex-col">
@@ -75,8 +59,12 @@ const PostForm: React.FC<TPostEventTypes> = ({ onClick }) => {
             <div className="flex justify-end">
               <button
                 type="submit"
-                disabled={isFormValid ? false : true}
-                className={isFormValid ? active : inactive}
+                disabled={!isFormValid ? true : false}
+                className={
+                  !isFormValid
+                    ? "rounded bg-gray-500 px-4 py-2 text-white"
+                    : "rounded bg-blue-500 px-4 py-2 text-white transition-colors duration-300 hover:bg-blue-600"
+                }
                 onClick={() =>
                   setPosts([...posts, { post: { header, body, id } }])
                 }
@@ -87,8 +75,8 @@ const PostForm: React.FC<TPostEventTypes> = ({ onClick }) => {
           </form>
         </div>
       ) : (
-        <div className="mr-48 mt-6 flex w-14 items-center justify-center shadow-md">
-          <div className="rounded-lg bg-white px-24 py-10 shadow-lg">
+        <div className="ml-[6rem] mr-24 mt-[1.5rem] flex w-24 items-center justify-center shadow-md">
+          <div className="rounded-lg bg-white px-24 py-4 shadow-lg">
             {posts.map(({ post, onClick, onSubmit }) => (
               <Post
                 post={post}
@@ -97,7 +85,10 @@ const PostForm: React.FC<TPostEventTypes> = ({ onClick }) => {
                 onSubmit={onSubmit}
               />
             ))}
-            <button className="ml-24 flex items-center" onClick={onClick}>
+            <button
+              className="ml-16 mr-[7.5rem] items-center"
+              onClick={onClick}
+            >
               <br />
               <br />
               {!isDeleted && <BsTrash />}

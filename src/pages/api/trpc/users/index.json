@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "display_name": "John Doe",
+      "username": "johndoe",
+      "post": {
+        "id": 1,
+        "header": "First Post",
+        "body": "Hello, this is my first post!"
+      }
+    },
+    {
+      "display_name": "Jane Smith",
+      "username": "janesmith",
+      "post": {
+        "id": 2,
+        "header": "Exciting News",
+        "body": "I have some exciting news to share!"
+      }
+    },
+    {
+      "display_name": "Alice Johnson",
+      "username": "alicejohnson",
+      "post": {
+        "id": 3,
+        "header": "New Project",
+        "body": "Introducing my new project. Check it out!"
+      }
+    },
+    {
+      "display_name": "Bob Wilson",
+      "username": "bobwilson",
+      "post": {
+        "id": 4,
+        "header": "Travel Adventure",
+        "body": "Sharing my recent travel adventure."
+      }
+    },
+    {
+      "display_name": "Emily Davis",
+      "username": "emilydavis",
+      "post": {
+        "id": 5,
+        "header": "Thoughts on Technology",
+        "body": "Discussing the latest trends in technology."
+      }
+    }
+  ]
+}
