@@ -15,6 +15,7 @@ const PostForm: React.FC<TPostEventTypes> = ({ onClick }) => {
     event.preventDefault();
 
     console.log("Submitted:", { header, body, id });
+    setIsDeleted(false);
     setIsSubmitted(true);
     setHeader("");
     setBody("");

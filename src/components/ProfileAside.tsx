@@ -25,7 +25,7 @@ const ProfileAside: React.FC<{ user: UserProp }> = ({ user }) => {
   return (
     <>
       <Link href="/profile">
-        <aside className="left-4 ml-10 mt-2 flex w-48 items-center rounded-md bg-green-500 px-2 py-1 align-top">
+        <aside className="left-4 ml-10 mt-2 w-48 rounded-md bg-green-500 px-2 py-1 align-top">
           {user?.profileImageUrl && (
             <div className="ml-6 mt-2">
               <Image
@@ -44,7 +44,7 @@ const ProfileAside: React.FC<{ user: UserProp }> = ({ user }) => {
         <h2 className="underline">Tags you follow</h2>
         <br />
         {exampleTags.map((tags) => (
-          <span key={tags} className="py-4 pr-4 ">
+          <span key={tags} className="py-4 pr-4">
             #{tags}{" "}
           </span>
         ))}

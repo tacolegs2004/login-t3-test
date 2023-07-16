@@ -17,3 +17,9 @@ export interface TPost extends TPostEventTypes {
     id: number;
   };
 }
+
+export interface IPost {
+  id: number;
+  header: string;
+  body: string;
+}

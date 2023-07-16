@@ -11,28 +11,25 @@ const Post: React.FC<TPost> = ({ post }) => {
   console.log(posts);
   return (
     isPressed && (
-      <div
-        key={post?.id}
-        className="mr-[15.4rem] flex w-fit flex-row items-start px-4"
-      >
+      <div className="rounded-md bg-white px-16 py-12 align-top" key={post?.id}>
         {user?.profileImageUrl && (
-          <div className="mr-[7rem] py-4">
+          <div className="mb-4">
             <Image
               src={user.profileImageUrl}
-              className="h-16 w-16 rounded-full"
+              className="mb-6 ml-5 rounded-full"
+              width={40}
+              height={40}
               alt="User Profile Picture"
-              width={60}
-              height={60}
             />
-            <span className="mt-2">{user.username}</span>
+            <h1 className="text-xl">
+              <strong>{user?.username}</strong>
+            </h1>
           </div>
         )}
-        <div className="ml-6 flex space-y-8">
-          <span className="mb-2">
-            <b>{post?.header}</b>
-            <br /> <p>{post?.body}</p>
-          </span>
-        </div>
+        <h1 className="text-lg">
+          <strong>{post?.header}</strong>
+        </h1>
+        <p>{post?.body}</p>
       </div>
     )
   );

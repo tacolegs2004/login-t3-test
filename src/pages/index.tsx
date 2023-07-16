@@ -36,11 +36,11 @@ const Home = () => {
       <aside>
         <ProfileAside user={user} />
       </aside>
-      <main className="flex-grow">
+      <span className="flex-grow">
         <span className="flex items-center justify-center pr-12">
           <PostCard className="ml-[16.8rem]">
             {isPressed && <PostForm onClick={handleDelete} />}
-            <span className="ml-24 mr-[24rem] h-full">
+            <span className="ml-24 mr-[24rem] h-full flex-grow">
               <PostButton onClick={handlePostButton} />
             </span>
             {/* {props.map((p) => (
@@ -48,7 +48,7 @@ const Home = () => {
             ))} */}
           </PostCard>
         </span>
-      </main>
+      </span>
     </div>
   );
 };
